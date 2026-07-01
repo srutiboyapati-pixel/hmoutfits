@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Double Life Closet — Mix, Match, Slay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-deep:#2A0A4A;
+    --purple:#5B1FA8;
+    --hotpink:#FF1F8F;
+    --pink-bright:#FF4FB8;
+    --cyan:#00D9E0;
+    --gold:#FFD400;
+    --paper:#FFF8EC;
+    --ink:#2A0A4A;
+    --shadow: 0 18px 40px rgba(20,0,40,0.45);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(circle at 15% -5%, rgba(255,79,184,0.35), transparent 45%),
+      radial-gradient(circle at 90% 10%, rgba(0,217,224,0.25), transparent 40%),
+      linear-gradient(160deg, var(--purple-deep) 0%, #3a1166 55%, var(--purple-deep) 100%);
+    color: var(--paper);
+    font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  /* ===== sparkle bg ===== */
+  .sparkle-layer{
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.7) 0, transparent 50%),
+      radial-gradient(2px 2px at 80% 10%, rgba(255,255,255,.55) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 60% 75%, rgba(255,255,255,.55) 0, transparent 50%),
+      radial-gradient(2px 2px at 30% 88%, rgba(255,255,255,.45) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 92% 60%, rgba(255,255,255,.55) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 45% 40%, rgba(255,255,255,.4) 0, transparent 50%),
+      radial-gradient(2px 2px at 15% 55%, rgba(255,212,0,.6) 0, transparent 50%),
+      radial-gradient(2px 2px at 70% 35%, rgba(0,217,224,.55) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 50% 12%, rgba(255,79,184,.55) 0, transparent 50%),
+      radial-gradient(2px 2px at 85% 85%, rgba(255,212,0,.5) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 5% 75%, rgba(0,217,224,.45) 0, transparent 50%),
+      radial-gradient(2px 2px at 38% 65%, rgba(255,79,184,.4) 0, transparent 50%);
+    background-size: 100% 100%;
+    animation: twinkle 4s ease-in-out infinite alternate;
+  }
+  @keyframes twinkle{ from{opacity:.45;} to{opacity:1;} }
+
+  /* ===== floating glitter confetti + mini disco balls ===== */
+  .decor-layer{ position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+  .confetti-bit{
+    position:absolute; top:-5%; border-radius:2px;
+    animation-name: confetti-fall; animation-timing-function: linear; animation-iteration-count: infinite;
+    opacity:.85;
+  }
+  @keyframes confetti-fall{
+    0%{ transform: translateY(-10vh) rotate(0deg); opacity:0; }
+    8%{ opacity:.9; }
+    92%{ opacity:.9; }
+    100%{ transform: translateY(112vh) rotate(360deg); opacity:0; }
+  }
+  .mini-ball{
+    position:absolute; border-radius:50%;
+    background: radial-gradient(circle at 32% 28%, #fff, #cdb8ff 45%, #5B1FA8 100%);
+    box-shadow: 0 0 14px rgba(255,255,255,0.55), 0 8px 18px rgba(0,0,0,0.4);
+    animation-name: mini-bob; animation-timing-function: ease-in-out; animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  .mini-ball::before{
+    content:''; position:absolute; inset:0; border-radius:50%;
+    background:
+      repeating-linear-gradient(45deg, transparent 0 3px, rgba(42,10,74,0.25) 3px 4px),
+      repeating-linear-gradient(-45deg, transparent 0 3px, rgba(42,10,74,0.18) 3px 4px);
+  }
+  @keyframes mini-bob{ from{ transform: translateY(-10px) rotate(-6deg);} to{ transform: translateY(10px) rotate(6deg);} }
+  .twirl-star{
+    position:absolute; animation-name: star-twirl; animation-timing-function: ease-in-out; animation-iteration-count: infinite;
+    filter: drop-shadow(0 0 6px currentColor);
+  }
+  @keyframes star-twirl{
+    0%,100%{ transform: rotate(0deg) scale(0.85); opacity:.55; }
+    50%{ transform: rotate(180deg) scale(1.15); opacity:1; }
+  }
+
+  /* ===== header / hero ===== */
+  header{
+    position:relative; z-index:2; overflow:hidden;
+    text-align:center;
+    padding: 56px 20px 30px;
+  }
+  @keyframes glow-pulse{ from{ opacity:.55; transform:scale(0.92);} to{ opacity:1; transform:scale(1.08);} }
+  .eyebrow{
+    font-family:'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  h1{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size: clamp(3.2rem, 8.5vw, 5.6rem);
+    line-height: 0.98;
+    background: linear-gradient(95deg, var(--gold), var(--hotpink) 55%, var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 70px rgba(255,31,143,0.3);
+  }
+  header p.sub{
+    margin-top:14px;
+    max-width: 560px;
+    margin-left:auto; margin-right:auto;
+    color: rgba(255,248,236,0.8);
+    font-size: 0.88rem;
+  }
+
+  /* ===== sticky nav pills ===== */
+  nav.tabbar{
+    position: sticky; top: 0; z-index: 20;
+    display:flex; justify-content:center; flex-wrap:wrap; gap:10px;
+    padding: 14px 16px;
+    background: rgba(20,4,46,0.78);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid rgba(255,255,255,0.08);
+  }
+  nav.tabbar a{
+    text-decoration:none;
+    font-family:'Baloo 2', sans-serif; font-weight:700; font-size:.92rem;
+    letter-spacing:1px; text-transform:uppercase;
+    color: var(--paper);
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 2px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    transition: all .2s ease;
+    clip-path: polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  }
+  nav.tabbar a:hover{ border-color: var(--cyan); color: var(--cyan); transform: translateY(-3px) rotate(-2deg); }
+
+  /* ===== layout ===== */
+  .studio{
+    position:relative; z-index:2;
+    max-width: 1180px;
+    margin: 40px auto 0;
+    padding: 0 20px 100px;
+    display:grid;
+    grid-template-columns: 1fr 380px;
+    gap: 34px;
+    align-items:start;
+  }
+  @media (max-width: 920px){
+    .studio{ grid-template-columns: 1fr; }
+  }
+
+  /* ===== STAGE (preview) ===== */
+  .stage-wrap{
+    position: sticky; top: 84px;
+  }
+  @media (max-width: 920px){ .stage-wrap{ position:static; order:-1; margin-bottom: 10px; } }
+  .stage{
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(255,212,0,0.25), transparent 60%),
+      linear-gradient(180deg, #1c0840 0%, #120530 100%);
+    border-radius: 28px;
+    border: 3px solid var(--hotpink);
+    box-shadow: var(--shadow), inset 0 0 60px rgba(255,31,143,0.15);
+    padding: 22px 18px 26px;
+    text-align:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .spotlight{
+    position:absolute; top:-40px; left:50%; transform:translateX(-50%);
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+    pointer-events:none;
+    animation: glow-pulse 3s ease-in-out infinite alternate;
+  }
+  .stage-label{
+    font-family:'Caveat', cursive; font-size:1.4rem; color: var(--cyan);
+  }
+  .stage-title{
+    font-family:'Baloo 2', sans-serif; font-weight:800; font-size:1.5rem;
+    color: var(--gold); margin-bottom: 10px;
+  }
+  .mannequin{
+    width: 200px; height: 280px; margin: 6px auto 10px;
+    position:relative;
+  }
+  .mannequin svg{ width:100%; height:100%; overflow:visible; }
+  .stage-piecelist{
+    list-style:none; text-align:left;
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px; padding: 14px 16px; margin-top: 6px;
+    font-size:.88rem; min-height: 40px;
+  }
+  .stage-piecelist li{
+    display:flex; justify-content:space-between; gap:10px;
+    padding: 5px 0; border-bottom: 1px dashed rgba(255,255,255,0.12);
+  }
+  .stage-piecelist li:last-child{ border-bottom:none; }
+  .stage-piecelist .role{ color: var(--cyan); font-weight:600; text-transform:uppercase; font-size:.7rem; letter-spacing:1px; }
+  .stage-piecelist .empty{ opacity:.55; font-style:italic; }
+  .accessory-chips{
+    display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; justify-content:center;
+  }
+  .accessory-chips span{
+    background: rgba(0,217,224,0.15); border:1px solid var(--cyan);
+    color: var(--cyan); font-size:.72rem; padding:4px 10px; border-radius:999px;
+  }
+  .go-btn{
+    margin-top:18px; width:100%; padding:14px;
+    border:none; border-radius:14px;
+    background: linear-gradient(95deg, var(--gold), var(--hotpink), var(--cyan), var(--gold));
+    background-size: 300% 100%;
+    color: var(--purple-deep);
+    font-family:'Baloo 2', sans-serif; font-weight:800; font-size:1.1rem; letter-spacing:1px;
+    cursor:pointer;
+    box-shadow: 0 14px 30px rgba(255,31,143,0.4);
+    transition: transform .15s ease;
+    animation: btn-shimmer 3.5s linear infinite;
+    position:relative; overflow:hidden;
+  }
+  @keyframes btn-shimmer{ from{ background-position: 0% 50%; } to{ background-position: 300% 50%; } }
+  .go-btn:hover{ transform: translateY(-2px) scale(1.02); }
+  .shuffle-row{ display:flex; gap:10px; margin-top:10px; }
+  .ghost-btn{
+    flex:1; padding: 10px; border-radius:12px;
+    border:1.5px solid rgba(255,255,255,0.3); background:transparent;
+    color: var(--paper); font-family:'Baloo 2', sans-serif; font-weight:600; font-size:.82rem;
+    cursor:pointer; transition: all .18s ease;
+  }
+  .ghost-btn:hover{ border-color: var(--cyan); color: var(--cyan); }
+
+  /* ===== RACKS ===== */
+  .rack-section{ margin-bottom: 46px; scroll-margin-top: 90px; }
+  .rack-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:16px; }
+  .rack-head .num{
+    font-family:'Baloo 2', sans-serif; font-weight:800; color: var(--purple-deep);
+    background: var(--gold); width:34px; height:34px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center; font-size:1rem;
+    transform: rotate(-6deg);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    animation: num-wiggle 3.2s ease-in-out infinite;
+  }
+  @keyframes num-wiggle{ 0%,100%{ transform: rotate(-6deg);} 50%{ transform: rotate(6deg) scale(1.08);} }
+  .rack-head h2::after{ content:' ✨'; }
+  .rack-head h2{
+    font-family:'Baloo 2', sans-serif; font-weight:700; font-size:1.5rem; color: var(--paper);
+  }
+  .rack-head p{
+    color: rgba(255,248,236,0.6); font-size:.85rem; margin-left:auto;
+  }
+  .rack-rod{
+    height:5px; border-radius:4px; margin-bottom:18px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+    box-shadow: 0 2px 12px rgba(255,212,0,0.5);
+  }
+  .swatch-grid{
+    display:grid; grid-template-columns: repeat(auto-fill, minmax(118px,1fr));
+    gap: 14px;
+  }
+  .sub-rack-title{
+    font-family:'Baloo 2', sans-serif; font-weight:700; font-size:1rem;
+    color: var(--cyan); margin: 20px 0 10px; letter-spacing:.5px;
+  }
+  .rack-section#you .sub-rack-title:first-of-type{ margin-top: 6px; }
+  .skin-grid{ grid-template-columns: repeat(auto-fill, minmax(88px,1fr)); }
+  .swatch{
+    background: linear-gradient(165deg, #fff, #fff4fa);
+    border-radius: 16px; padding: 12px 8px 10px;
+    text-align:center; cursor:pointer;
+    border: 3px solid transparent;
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    color: var(--ink);
+  }
+  .swatch:hover{ transform: translateY(-4px); }
+  .swatch .hook{ width:10px; height:10px; border:2px solid var(--gold); border-bottom:none; border-radius:10px 10px 0 0; margin:0 auto 2px; }
+  .swatch .art{ width:70px; height:80px; margin: 2px auto 4px; }
+  .swatch .art svg{ width:100%; height:100%; overflow:visible; }
+  .swatch .name{ font-family:'Baloo 2', sans-serif; font-weight:600; font-size:.78rem; line-height:1.15; }
+  .swatch{ position:relative; }
+  .swatch.selected{
+    border-color: var(--hotpink);
+    box-shadow: 0 16px 34px rgba(255,31,143,0.45);
+    transform: translateY(-5px) scale(1.04);
+  }
+  .swatch.selected::after{
+    content:'✨'; position:absolute; top:-10px; right:-6px; font-size:1.1rem;
+    animation: star-twirl 1.6s ease-in-out infinite;
+  }
+  .swatch.selected .name{ color: var(--hotpink); }
+  .swatch.acc.selected{ border-color: var(--cyan); box-shadow: 0 16px 34px rgba(0,217,224,0.4); }
+  .swatch.acc.selected .name{ color:#0a8a90; }
+
+  footer{
+    position:relative; z-index:2;
+    text-align:center; padding: 20px 20px 60px;
+    color: rgba(255,248,236,0.4); font-size:.8rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="sparkle-layer"></div>
+<div class="decor-layer" id="decorLayer"></div>
+
+<header>
+  <div class="eyebrow">✦ your closet, your rules ✦</div>
+  <h1>The Double Life Closet</h1>
+  <p class="sub">Pick a top, a bottom, and shoes off the rack — your look comes to life on stage in real time, disco lights and all! Add some sparkle with accessories, then hit the spotlight. 🪩✨</p>
+</header>
+
+<nav class="tabbar">
+  <a href="#you">You</a>
+  <a href="#tops">Tops</a>
+  <a href="#bottoms">Bottoms</a>
+  <a href="#shoes">Shoes</a>
+  <a href="#accessories">Accessories</a>
+  <a href="#stage-anchor">On Stage</a>
+</nav>
+
+<div class="studio">
+  <div class="racks">
+
+    <section class="rack-section" id="you">
+      <div class="rack-head"><span class="num">✦</span><h2>Meet You</h2><p>set your look first — then see what suits it</p></div>
+      <div class="rack-rod"></div>
+      <h3 class="sub-rack-title">Skin Tone</h3>
+      <div class="swatch-grid skin-grid" id="skinGrid"></div>
+      <h3 class="sub-rack-title">Eye Color</h3>
+      <div class="swatch-grid" id="eyeGrid"></div>
+      <h3 class="sub-rack-title">Hairstyle</h3>
+      <div class="swatch-grid" id="hairGrid"></div>
+      <h3 class="sub-rack-title">Hair Color</h3>
+      <div class="swatch-grid skin-grid" id="hairColorGrid"></div>
+    </section>
+
+    <section class="rack-section" id="tops">
+      <div class="rack-head"><span class="num">1</span><h2>Tops Rack</h2><p>tap to try one on</p></div>
+      <div class="rack-rod"></div>
+      <div class="swatch-grid" id="topsGrid"></div>
+    </section>
+
+    <section class="rack-section" id="bottoms">
+      <div class="rack-head"><span class="num">2</span><h2>Bottoms Rack</h2><p>jeans, shorts &amp; skirts</p></div>
+      <div class="rack-rod"></div>
+      <div class="swatch-grid" id="bottomsGrid"></div>
+    </section>
+
+    <section class="rack-section" id="shoes">
+      <div class="rack-head"><span class="num">3</span><h2>Shoe Shelf</h2><p>stomp, strut, or skip</p></div>
+      <div class="rack-rod"></div>
+      <div class="swatch-grid" id="shoesGrid"></div>
+    </section>
+
+    <section class="rack-section" id="accessories">
+      <div class="rack-head"><span class="num">4</span><h2>Accessory Bin</h2><p>pick as many as you like</p></div>
+      <div class="rack-rod"></div>
+      <div class="swatch-grid" id="accGrid"></div>
+    </section>
+
+  </div>
+
+  <div class="stage-wrap" id="stage-anchor">
+    <div class="stage">
+      <div class="spotlight"></div>
+      <div class="stage-label">on stage</div>
+      <div class="stage-title" id="stageTitle">Your Look</div>
+      <div class="mannequin" id="mannequin"></div>
+      <ul class="stage-piecelist" id="pieceList">
+        <li class="empty">Pick a top to get started ✨</li>
+      </ul>
+      <div class="accessory-chips" id="accChips"></div>
+      <button class="go-btn" id="randomBtn">Surprise Me 🎲</button>
+      <div class="shuffle-row">
+        <button class="ghost-btn" id="clearBtn">Clear Outfit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>🪩 ✨ made for the girl with two closets and one spotlight ✨ 🪩</footer>
+
+<script>
+/* ===================== AMBIENT DECOR: confetti, mini disco balls, twirl stars ===================== */
+(function scatterDecor(){
+  const layer = document.getElementById('decorLayer');
+  const confettiColors = ['#FF1F8F','#FFD400','#00D9E0','#FF4FB8','#C9A6FF'];
+  const starGlyphs = ['✦','✧','⋆','✨'];
+  const starColors = ['#FFD400','#00D9E0','#FF4FB8','#fff'];
+
+  // falling glitter confetti
+  for(let i=0; i<26; i++){
+    const bit = document.createElement('div');
+    bit.className = 'confetti-bit';
+    const size = 5 + Math.random()*6;
+    bit.style.width = size + 'px';
+    bit.style.height = (size*0.4) + 'px';
+    bit.style.left = (Math.random()*100) + 'vw';
+    bit.style.background = confettiColors[i % confettiColors.length];
+    bit.style.animationDuration = (7 + Math.random()*8) + 's';
+    bit.style.animationDelay = (Math.random()*10) + 's';
+    bit.style.transform = `rotate(${Math.random()*360}deg)`;
+    layer.appendChild(bit);
+  }
+
+  // small drifting disco balls
+  for(let i=0; i<6; i++){
+    const ball = document.createElement('div');
+    ball.className = 'mini-ball';
+    const size = 18 + Math.random()*22;
+    ball.style.width = size + 'px';
+    ball.style.height = size + 'px';
+    ball.style.left = (Math.random()*92) + 'vw';
+    ball.style.top = (8 + Math.random()*80) + 'vh';
+    ball.style.opacity = 0.5 + Math.random()*0.4;
+    ball.style.animationDuration = (2 + Math.random()*2) + 's';
+    layer.appendChild(ball);
+  }
+
+  // twirling little stars
+  for(let i=0; i<16; i++){
+    const star = document.createElement('div');
+    star.className = 'twirl-star';
+    star.textContent = starGlyphs[i % starGlyphs.length];
+    star.style.left = (Math.random()*96) + 'vw';
+    star.style.top = (Math.random()*96) + 'vh';
+    star.style.fontSize = (0.8 + Math.random()*1.1) + 'rem';
+    star.style.color = starColors[i % starColors.length];
+    star.style.animationDuration = (2 + Math.random()*3) + 's';
+    star.style.animationDelay = (Math.random()*3) + 's';
+    layer.appendChild(star);
+  }
+})();
+
+/* ===================== GARMENT SVG ART (paths) ===================== */
+function shirtPath(color, accent){
+  return `<path d="M30 8 L20 0 L4 10 L10 24 L18 19 L18 56 L62 56 L62 19 L70 24 L76 10 L60 0 L50 8
+           Q40 14 30 8 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>
+  ${accent ? `<circle cx="40" cy="20" r="2.4" fill="${accent}"/><circle cx="33" cy="28" r="2" fill="${accent}"/><circle cx="47" cy="30" r="2.2" fill="${accent}"/><circle cx="40" cy="38" r="2" fill="${accent}"/>` : ''}`;
+}
+function pantsPath(color){
+  return `<path d="M10 0 L70 0 L74 60 L52 60 L40 18 L28 60 L6 60 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>`;
+}
+function shortsPath(color){
+  return `<path d="M10 0 L70 0 L72 30 L50 30 L40 14 L30 30 L8 30 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>`;
+}
+function skirtPath(color){
+  return `<path d="M16 0 L64 0 L76 34 L4 34 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>`;
+}
+function jacketPath(color){
+  return `<path d="M28 6 L18 0 L2 12 L8 26 L16 21 L14 58 L36 58 L38 30 L42 30 L44 58 L66 58 L64 21 L72 26 L78 12 L62 0 L52 6
+           Q40 12 28 6 Z" fill="none" stroke="${color}" stroke-width="6" stroke-linejoin="round"/>`;
+}
+function bootsPath(color){
+  return `<path d="M4 0 L18 0 L18 20 L26 20 L30 30 L0 30 L0 8 Q0 0 4 0 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>
+          <path d="M44 0 L58 0 L58 20 L66 20 L70 30 L40 30 L40 8 Q40 0 44 0 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>`;
+}
+function heelsPath(color){
+  return `<path d="M2 10 Q2 2 12 2 L20 2 L20 12 L8 16 L4 26 L0 24 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>
+          <path d="M42 10 Q42 2 52 2 L60 2 L60 12 L48 16 L44 26 L40 24 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>`;
+}
+function sneakersPath(color, accent){
+  return `<path d="M0 18 Q0 8 12 8 L22 8 L30 16 L34 16 L34 24 L0 24 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>
+          <path d="M40 18 Q40 8 52 8 L62 8 L70 16 L74 16 L74 24 L40 24 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>
+          <rect x="4" y="20" width="26" height="4" rx="2" fill="${accent}"/><rect x="44" y="20" width="26" height="4" rx="2" fill="${accent}"/>`;
+}
+function sandalsPath(color){
+  return `<ellipse cx="14" cy="20" rx="14" ry="7" fill="${color}" opacity="0.85"/><path d="M14 4 L14 16" stroke="${color}" stroke-width="3"/>
+          <ellipse cx="54" cy="20" rx="14" ry="7" fill="${color}" opacity="0.85"/><path d="M54 4 L54 16" stroke="${color}" stroke-width="3"/>`;
+}
+function maryJanesPath(color){
+  return `<path d="M2 8 Q2 0 10 0 L20 0 L20 12 L30 16 L30 24 L0 24 L0 10 Q0 8 2 8 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>
+          <path d="M2 10 Q10 15 20 10" stroke="#fff" stroke-width="1.4" fill="none" opacity="0.5"/>
+          <circle cx="11" cy="11" r="1.6" fill="#FFD400"/>
+          <path d="M42 8 Q42 0 50 0 L60 0 L60 12 L70 16 L70 24 L40 24 L40 10 Q40 8 42 8 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>
+          <path d="M42 10 Q50 15 60 10" stroke="#fff" stroke-width="1.4" fill="none" opacity="0.5"/>
+          <circle cx="51" cy="11" r="1.6" fill="#FFD400"/>`;
+}
+function uniformTopPath(vestColor, shirtColor, tieColor){
+  return `<path d="M30 8 L20 0 L4 10 L10 24 L18 19 L18 56 L62 56 L62 19 L70 24 L76 10 L60 0 L50 8
+           Q40 14 30 8 Z" fill="${shirtColor}" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>
+  <path d="M32 10 L40 20 L48 10 L44 6 Q40 10 36 6 Z" fill="${tieColor}" stroke="rgba(42,10,74,0.3)" stroke-width="1"/>
+  <path d="M36 18 L44 18 L41 40 L40 44 L39 40 Z" fill="${tieColor}" stroke="rgba(42,10,74,0.3)" stroke-width="1"/>
+  <path d="M28 12 L20 6 L14 18 L18 40 L22 56 L34 56 L30 24 Z" fill="${vestColor}" stroke="rgba(42,10,74,0.35)" stroke-width="1.5"/>
+  <path d="M52 12 L60 6 L66 18 L62 40 L58 56 L46 56 L50 24 Z" fill="${vestColor}" stroke="rgba(42,10,74,0.35)" stroke-width="1.5"/>
+  <path d="M22 56 L34 56 L30 24 L28 12" fill="none" stroke="rgba(42,10,74,0.35)" stroke-width="1"/>`;
+}
+function bottomShapeFor(kind, color){
+  if(kind === 'shorts') return shortsPath(color);
+  if(kind === 'skirt') return skirtPath(color);
+  return pantsPath(color);
+}
+function shoeShapeFor(kind, color){
+  if(kind === 'heels') return heelsPath(color);
+  if(kind === 'sneakers') return sneakersPath(color, '#fff8ec');
+  if(kind === 'sandals') return sandalsPath(color);
+  if(kind === 'flats') return maryJanesPath(color);
+  return bootsPath(color);
+}
+function topShapeFor(item){
+  if(item.kind === 'uniform') return uniformTopPath(item.color, item.shirtColor || '#fff', item.accent || '#8a2a3a');
+  return shirtPath(item.color, item.accent);
+}
+
+/* swatch icon (single garment, used in the racks) */
+function swatchSVG(kind, role, color, accent, shirtColor){
+  let inner, vb;
+  if(role === 'top'){ inner = topShapeFor({kind, color, accent, shirtColor}); vb = '0 -2 80 60'; }
+  else if(role === 'bottom'){ inner = bottomShapeFor(kind, color); vb = '0 0 80 60'; }
+  else { inner = shoeShapeFor(kind, color); vb = '0 0 80 30'; }
+  return `<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+}
+
+/* accessory art, drawn directly on the mannequin */
+function accessoryPart(id){
+  switch(id){
+    case 'sunglasses':
+      return `<g>
+        <path d="M77 30 Q77 24 84 24 L92 24 Q96 24 96 30 L96 37 Q96 42 90 42 L83 42 Q77 42 77 37 Z" fill="#2A0A4A" stroke="#FFD400" stroke-width="1.5"/>
+        <path d="M104 30 Q104 24 111 24 L119 24 Q123 24 123 30 L123 37 Q123 42 117 42 L110 42 Q104 42 104 37 Z" fill="#2A0A4A" stroke="#FFD400" stroke-width="1.5"/>
+        <path d="M96 29 Q100 27 104 29" stroke="#2A0A4A" stroke-width="3" fill="none"/>
+        <path d="M77 28 L66 24" stroke="#2A0A4A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M123 28 L134 24" stroke="#2A0A4A" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="84" cy="30" r="2" fill="#fff" opacity="0.55"/>
+        <circle cx="111" cy="30" r="2" fill="#fff" opacity="0.55"/>
+      </g>`;
+    case 'necklace':
+      return `<g>
+        <path d="M84 68 Q100 82 116 68" stroke="#FFD400" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="100" cy="80" r="5" fill="#FF4FB8" stroke="#FFD400" stroke-width="1.5"/>
+      </g>`;
+    case 'earrings':
+      return `<g>
+        <circle cx="76" cy="40" r="4" fill="none" stroke="#FFD400" stroke-width="2.2"/>
+        <circle cx="124" cy="40" r="4" fill="none" stroke="#FFD400" stroke-width="2.2"/>
+      </g>`;
+    case 'beanie':
+      return `<g>
+        <path d="M76 34 Q76 4 100 4 Q124 4 124 34 L124 38 L76 38 Z" fill="#FF4FB8" stroke="#2A0A4A" stroke-width="1.2"/>
+        <rect x="76" y="30" width="48" height="9" rx="4.5" fill="#FF1F8F" stroke="#2A0A4A" stroke-width="1.2"/>
+        <circle cx="100" cy="4" r="6.5" fill="#FFF8EC" stroke="#2A0A4A" stroke-width="1"/>
+      </g>`;
+    case 'purse':
+      return `<g>
+        <path d="M74 70 L132 152" stroke="#5B1FA8" stroke-width="4.5" stroke-linecap="round"/>
+        <rect x="116" y="144" width="30" height="26" rx="7" fill="#5B1FA8" stroke="#2A0A4A" stroke-width="1.5"/>
+        <path d="M124 144 Q124 134 131 134 Q138 134 138 144" fill="none" stroke="#5B1FA8" stroke-width="3.5"/>
+        <circle cx="131" cy="157" r="2.4" fill="#FFD400"/>
+      </g>`;
+    case 'bracelets':
+      return `<g>
+        <ellipse cx="63" cy="140" rx="7" ry="3.6" fill="none" stroke="#00D9E0" stroke-width="2.4"/>
+        <ellipse cx="63" cy="146" rx="7" ry="3.6" fill="none" stroke="#FFD400" stroke-width="2.4"/>
+        <ellipse cx="137" cy="140" rx="7" ry="3.6" fill="none" stroke="#FF4FB8" stroke-width="2.4"/>
+        <ellipse cx="137" cy="146" rx="7" ry="3.6" fill="none" stroke="#FFD400" stroke-width="2.4"/>
+      </g>`;
+    case 'scrunchie':
+      return `<g>
+        <circle cx="121" cy="16" r="6.5" fill="#FF4FB8" stroke="#2A0A4A" stroke-width="1"/>
+        <circle cx="125" cy="10" r="3.5" fill="#FF1F8F"/>
+        <circle cx="125" cy="22" r="3.5" fill="#FF1F8F"/>
+        <circle cx="117" cy="9" r="2.6" fill="#FFD400"/>
+      </g>`;
+    case 'hat':
+      return `<g>
+        <ellipse cx="100" cy="12" rx="38" ry="8" fill="#FFD400" stroke="#2A0A4A" stroke-width="1.2"/>
+        <path d="M85 12 Q85 -4 100 -4 Q115 -4 115 12 Z" fill="#FFC400" stroke="#2A0A4A" stroke-width="1.2"/>
+        <rect x="85" y="7" width="30" height="5" fill="#FF1F8F"/>
+      </g>`;
+    case 'backpack':
+      return `<g>
+        <path d="M60 150 Q60 138 74 138 L126 138 Q140 138 140 150 L140 185 Q140 196 128 196 L72 196 Q60 196 60 185 Z" fill="#1b0e2e" stroke="#2A0A4A" stroke-width="1.5"/>
+        <rect x="82" y="144" width="36" height="16" rx="5" fill="#3a1166" stroke="#2A0A4A" stroke-width="1"/>
+        <path d="M70 138 Q70 122 78 122 L82 122 L82 138" fill="none" stroke="#1b0e2e" stroke-width="6" stroke-linecap="round"/>
+        <path d="M130 138 Q130 122 122 122 L118 122 L118 138" fill="none" stroke="#1b0e2e" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="100" cy="178" r="4" fill="#FFD400"/>
+      </g>`;
+    case 'headband':
+      return `<g>
+        <path d="M76 20 Q100 -4 124 20" fill="none" stroke="#1b0e2e" stroke-width="7" stroke-linecap="round"/>
+      </g>`;
+    default: return '';
+  }
+}
+const accessoryRenderOrder = ['backpack','purse','bracelets','necklace','sunglasses','earrings','scrunchie','headband','beanie','hat'];
+
+/* ===== physical trait art ===== */
+function hairPath(kind, color){
+  const cap = `<ellipse cx="100" cy="20" rx="24" ry="14" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>`;
+  switch(kind){
+    case 'long':
+      return cap + `<rect x="70" y="18" width="15" height="95" rx="7.5" fill="${color}"/><rect x="115" y="18" width="15" height="95" rx="7.5" fill="${color}"/>`;
+    case 'ponytail':
+      return cap + `<rect x="118" y="14" width="13" height="18" rx="5" fill="${color}"/><ellipse cx="130" cy="55" rx="9" ry="28" fill="${color}" transform="rotate(12 130 55)"/><rect x="120" y="26" width="10" height="5" fill="#FFD400"/>`;
+    case 'curly':
+      return `<g fill="${color}">
+        <circle cx="78" cy="18" r="12"/><circle cx="92" cy="8" r="12"/><circle cx="108" cy="8" r="12"/><circle cx="122" cy="18" r="12"/>
+        <circle cx="72" cy="32" r="10"/><circle cx="128" cy="32" r="10"/>
+        <circle cx="100" cy="6" r="11"/>
+      </g>`;
+    case 'buns':
+      return cap + `<circle cx="80" cy="8" r="9" fill="${color}"/><circle cx="120" cy="8" r="9" fill="${color}"/>`;
+    case 'pixie':
+      return `<ellipse cx="100" cy="22" rx="23" ry="15" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>`;
+    case 'pigtails':
+      return cap + `<rect x="64" y="30" width="12" height="6" rx="3" fill="#FFD400"/><ellipse cx="68" cy="58" rx="10" ry="24" fill="${color}"/>
+                     <rect x="124" y="30" width="12" height="6" rx="3" fill="#FFD400"/><ellipse cx="132" cy="58" rx="10" ry="24" fill="${color}"/>`;
+    case 'bun':
+      return cap + `<circle cx="100" cy="6" r="10" fill="${color}"/>`;
+    default:
+      return cap;
+  }
+}
+function eyesOnFace(color){
+  return `<g>
+    <ellipse cx="92" cy="37" rx="4.5" ry="3.2" fill="#fff"/>
+    <circle cx="92" cy="37" r="2.2" fill="${color}"/><circle cx="92" cy="37" r="0.9" fill="#1a0a2e"/>
+    <ellipse cx="108" cy="37" rx="4.5" ry="3.2" fill="#fff"/>
+    <circle cx="108" cy="37" r="2.2" fill="${color}"/><circle cx="108" cy="37" r="0.9" fill="#1a0a2e"/>
+    <path d="M92.5 45 Q96 42.3 100 44.2 Q104 42.3 107.5 45 Q100 47 92.5 45 Z" fill="#FF8FBE" stroke="rgba(42,10,74,0.3)" stroke-width="0.6" stroke-linejoin="round"/>
+    <path d="M92.5 45 Q100 52.5 107.5 45 Q100 48.3 92.5 45 Z" fill="#FF4F94" stroke="rgba(42,10,74,0.3)" stroke-width="0.6" stroke-linejoin="round"/>
+  </g>`;
+}
+
+/* ===================== DOLL BODY (on-stage mannequin, matches reference proportions) ===================== */
+function faceOnBody(eyeColor){
+  return `<g>
+    <path d="M79 27 Q85 23.5 91 26" stroke="#3B2415" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M109 26 Q115 23.5 121 27" stroke="#3B2415" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="87" cy="37" rx="7" ry="8.4" fill="#fff"/>
+    <circle cx="87" cy="38.5" r="5.1" fill="${eyeColor}"/><circle cx="87" cy="38.5" r="2.2" fill="#1a0a2e"/><circle cx="85.2" cy="35.8" r="1.6" fill="#fff"/>
+    <path d="M80 33 Q87 29.5 94 33" stroke="#2A0A4A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="113" cy="37" rx="7" ry="8.4" fill="#fff"/>
+    <circle cx="113" cy="38.5" r="5.1" fill="${eyeColor}"/><circle cx="113" cy="38.5" r="2.2" fill="#1a0a2e"/><circle cx="111.2" cy="35.8" r="1.6" fill="#fff"/>
+    <path d="M106 33 Q113 29.5 120 33" stroke="#2A0A4A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="80" cy="46" rx="4.6" ry="2.8" fill="#FF8FBE" opacity="0.45"/>
+    <ellipse cx="120" cy="46" rx="4.6" ry="2.8" fill="#FF8FBE" opacity="0.45"/>
+    <path d="M99 42 Q100 44.5 101 42" stroke="rgba(150,100,70,0.5)" stroke-width="1" fill="none"/>
+    <path d="M94 50 Q100 54 106 50" stroke="#c9556f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>`;
+}
+function headOnBody(skin){
+  return `<ellipse cx="100" cy="36" rx="23" ry="25" fill="${skin}" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <ellipse cx="76" cy="38" rx="3.5" ry="5" fill="${skin}"/><ellipse cx="124" cy="38" rx="3.5" ry="5" fill="${skin}"/>
+          <rect x="90" y="54" width="20" height="18" rx="5" fill="${skin}"/>`;
+}
+function armsOnBody(skin){
+  return `<path d="M66 72 Q56 92 58 122 Q59 138 65 150 L77 146 Q71 130 72 106 Q73 88 80 72 Z" fill="${skin}"/>
+          <path d="M134 72 Q144 92 142 122 Q141 138 135 150 L123 146 Q129 130 128 106 Q127 88 120 72 Z" fill="${skin}"/>`;
+}
+function handsOnBody(skin){
+  return `<ellipse cx="70" cy="152" rx="6.5" ry="7.5" fill="${skin}"/><ellipse cx="130" cy="152" rx="6.5" ry="7.5" fill="${skin}"/>`;
+}
+function legsOnBody(skin){
+  return `<rect x="85" y="150" width="14" height="56" rx="7" fill="${skin}"/><rect x="101" y="150" width="14" height="56" rx="7" fill="${skin}"/>`;
+}
+function hairBackOnBody(color){
+  return `<path d="M62 46 Q48 80 53 130 Q55 155 64 168 L76 163 Q68 138 70 100 Q71 68 80 46 Z" fill="${color}"/>
+          <path d="M138 46 Q152 80 147 130 Q145 155 136 168 L124 163 Q132 138 130 100 Q129 68 120 46 Z" fill="${color}"/>`;
+}
+function hairFrontOnBody(kind, color){
+  const dome = `<path d="M77 34 Q73 8 100 4 Q127 8 123 34 Q123 16 100 14 Q77 16 77 34 Z" fill="${color}"/>`;
+  const sideBangs = `<path d="M77 32 Q79 18 92 14 Q83 24 84 40 Q79 40 77 32 Z" fill="${color}"/>
+                      <path d="M123 32 Q121 18 108 14 Q117 24 116 40 Q121 40 123 32 Z" fill="${color}"/>`;
+  const sideStrands = `<path d="M72 34 Q60 62 64 100 Q66 118 74 128 L82 124 Q75 110 74 88 Q73 60 80 36 Z" fill="${color}" opacity="0.96"/>
+                        <path d="M128 34 Q140 62 136 100 Q134 118 126 128 L118 124 Q125 110 126 88 Q127 60 120 36 Z" fill="${color}" opacity="0.96"/>`;
+  switch(kind){
+    case 'ponytail':
+      return dome + sideBangs + `<rect x="118" y="16" width="12" height="14" rx="5" fill="${color}"/><ellipse cx="132" cy="58" rx="9" ry="34" fill="${color}" transform="rotate(10 132 58)"/><rect x="119" y="26" width="10" height="5" fill="#FFD400"/>`;
+    case 'curly':
+      return `<g fill="${color}">
+        <circle cx="80" cy="22" r="13"/><circle cx="94" cy="10" r="13"/><circle cx="106" cy="10" r="13"/><circle cx="120" cy="22" r="13"/>
+        <circle cx="74" cy="38" r="11"/><circle cx="126" cy="38" r="11"/><circle cx="100" cy="7" r="12"/>
+      </g>`;
+    case 'buns':
+      return dome + sideBangs + `<circle cx="80" cy="8" r="9" fill="${color}"/><circle cx="120" cy="8" r="9" fill="${color}"/>`;
+    case 'pixie':
+      return `<ellipse cx="100" cy="24" rx="26" ry="18" fill="${color}"/>`;
+    case 'pigtails':
+      return dome + sideBangs + `<rect x="60" y="34" width="12" height="6" rx="3" fill="#FFD400"/><ellipse cx="64" cy="64" rx="10" ry="26" fill="${color}"/>
+                     <rect x="128" y="34" width="12" height="6" rx="3" fill="#FFD400"/><ellipse cx="136" cy="64" rx="10" ry="26" fill="${color}"/>`;
+    case 'bun':
+      return dome + sideBangs + `<circle cx="100" cy="6" r="10" fill="${color}"/>`;
+    case 'long':
+    default:
+      return dome + sideBangs + sideStrands;
+  }
+}
+function skinSwatchSVG(color){
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="30" fill="${color}" stroke="rgba(42,10,74,0.25)" stroke-width="2"/></svg>`;
+}
+function eyeSwatchSVG(color){
+  return `<svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="22" cy="25" rx="16" ry="11" fill="#fff" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>
+    <circle cx="22" cy="25" r="8" fill="${color}"/><circle cx="22" cy="25" r="3.4" fill="#1a0a2e"/><circle cx="18" cy="21" r="1.6" fill="#fff"/>
+    <ellipse cx="58" cy="25" rx="16" ry="11" fill="#fff" stroke="rgba(42,10,74,0.3)" stroke-width="1.5"/>
+    <circle cx="58" cy="25" r="8" fill="${color}"/><circle cx="58" cy="25" r="3.4" fill="#1a0a2e"/><circle cx="54" cy="21" r="1.6" fill="#fff"/>
+  </svg>`;
+}
+function hairSwatchSVG(kind, color){
+  return `<svg viewBox="55 -8 90 95" xmlns="http://www.w3.org/2000/svg">${hairPath(kind, color)}</svg>`;
+}
+
+/* torso/sleeve base + garment overlays, fitted to the new body proportions */
+function torsoBaseOnBody(color){
+  return `<path d="M70 68 Q100 60 130 68 Q128 96 122 120 Q100 128 78 120 Q72 96 70 68 Z" fill="${color}" stroke="rgba(42,10,74,0.25)" stroke-width="1"/>`;
+}
+function sleevesOnBody(color){
+  return `<path d="M66 72 Q56 92 58 122 Q59 138 65 150 L77 146 Q71 130 72 106 Q73 88 80 72 Z" fill="${color}" stroke="rgba(42,10,74,0.25)" stroke-width="1"/>
+          <path d="M134 72 Q144 92 142 122 Q141 138 135 150 L123 146 Q129 130 128 106 Q127 88 120 72 Z" fill="${color}" stroke="rgba(42,10,74,0.25)" stroke-width="1"/>`;
+}
+function vestOnBody(color){
+  return `<path d="M72 70 L87 65 L100 84 L113 65 L128 70 L124 118 Q100 126 76 118 Z" fill="${color}" stroke="rgba(42,10,74,0.35)" stroke-width="1.3"/>
+          <circle cx="90" cy="100" r="1.6" fill="rgba(0,0,0,0.35)"/><circle cx="110" cy="100" r="1.6" fill="rgba(0,0,0,0.35)"/>
+          <circle cx="89" cy="110" r="1.6" fill="rgba(0,0,0,0.35)"/><circle cx="111" cy="110" r="1.6" fill="rgba(0,0,0,0.35)"/>
+          <path d="M88 66 Q100 86 88 122" fill="none" stroke="rgba(42,10,74,0.25)" stroke-width="1"/>
+          <path d="M112 66 Q100 86 112 122" fill="none" stroke="rgba(42,10,74,0.25)" stroke-width="1"/>`;
+}
+function tieOnBody(color){
+  return `<path d="M95 74 L100 84 L105 74 L102 68 Q100 72 98 68 Z" fill="${color}"/>
+          <path d="M97.5 80 L102.5 80 L101 106 L100 110 L99 106 Z" fill="${color}"/>`;
+}
+function broochOnBody(){
+  return `<circle cx="85" cy="84" r="2.6" fill="#FFD400" stroke="#7a2436" stroke-width="1"/>`;
+}
+function accentDotsOnBody(accent){
+  if(!accent) return '';
+  return `<circle cx="100" cy="90" r="2.4" fill="${accent}"/><circle cx="92" cy="100" r="2" fill="${accent}"/><circle cx="108" cy="102" r="2.2" fill="${accent}"/><circle cx="100" cy="112" r="2" fill="${accent}"/>`;
+}
+function topOnBody(item){
+  if(item.kind === 'uniform'){
+    return torsoBaseOnBody(item.shirtColor || '#fff8ec') + sleevesOnBody(item.shirtColor || '#fff8ec')
+      + vestOnBody(item.color) + tieOnBody(item.accent || '#6b2436') + broochOnBody();
+  }
+  return torsoBaseOnBody(item.color) + sleevesOnBody(item.color) + accentDotsOnBody(item.accent);
+}
+function skirtOnBody(color){
+  return `<path d="M76 118 L124 118 L136 152 L64 152 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>
+          <path d="M85 118 L80 152 M94.5 118 L91.5 152 M105.5 118 L108.5 152 M115 118 L120 152" stroke="rgba(0,0,0,0.16)" stroke-width="1.3"/>
+          <rect x="76" y="116" width="48" height="6" rx="3" fill="rgba(0,0,0,0.18)"/>`;
+}
+function shortsOnBody(color){
+  return `<path d="M78 118 L122 118 L128 150 L106 150 L100 138 L94 150 L72 150 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>
+          <rect x="76" y="116" width="48" height="6" rx="3" fill="rgba(0,0,0,0.15)"/>`;
+}
+function pantsOnBody(color){
+  return `<path d="M74 118 L126 118 L122 138 L108 138 L108 122 L92 122 L92 138 L78 138 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>
+          <rect x="82" y="132" width="16" height="76" rx="7" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>
+          <rect x="102" y="132" width="16" height="76" rx="7" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>`;
+}
+function bottomOnBody(kind, color){
+  if(kind === 'shorts') return shortsOnBody(color);
+  if(kind === 'skirt') return skirtOnBody(color);
+  return pantsOnBody(color);
+}
+function maryJanesOnBody(color){
+  return `<path d="M78 216 Q78 208 86 208 L94 208 L94 218 L108 224 L108 232 L76 232 Q74 232 74 228 L74 220 Q74 216 78 216 Z" fill="${color}" stroke="#0f0620" stroke-width="1"/>
+          <circle cx="88" cy="212" r="1.8" fill="#FFD400"/>
+          <path d="M96 216 Q96 208 104 208 L112 208 L112 218 L126 224 L126 232 L94 232 Q92 232 92 228 L92 220 Q92 216 96 216 Z" fill="${color}" stroke="#0f0620" stroke-width="1"/>
+          <circle cx="106" cy="212" r="1.8" fill="#FFD400"/>`;
+}
+function bootsOnBody(color){
+  return `<path d="M76 196 L96 196 L96 216 L108 224 L108 234 L72 234 L72 200 Q72 196 76 196 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>
+          <path d="M104 196 L124 196 L124 200 L124 234 L88 234 L88 224 L100 216 L100 196 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.2"/>`;
+}
+function heelsOnBody(color){
+  return `<path d="M78 210 Q78 206 84 206 L92 206 L98 218 L94 230 L82 230 L76 222 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.1"/>
+          <path d="M100 210 Q100 206 106 206 L114 206 L122 222 L118 230 L104 230 L100 218 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.1"/>`;
+}
+function sneakersOnBody(color, accent){
+  return `<path d="M74 214 Q74 206 82 206 L92 206 L100 216 L106 216 L106 228 L74 228 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.1"/>
+          <path d="M94 214 Q94 206 102 206 L112 206 L120 216 L126 216 L126 228 L94 228 Z" fill="${color}" stroke="rgba(42,10,74,0.3)" stroke-width="1.1"/>
+          <rect x="76" y="224" width="28" height="4" rx="2" fill="${accent}"/><rect x="96" y="224" width="28" height="4" rx="2" fill="${accent}"/>`;
+}
+function sandalsOnBody(color){
+  return `<ellipse cx="88" cy="222" rx="14" ry="8" fill="${color}" opacity="0.9"/><path d="M88 202 L88 216" stroke="${color}" stroke-width="3"/>
+          <ellipse cx="112" cy="222" rx="14" ry="8" fill="${color}" opacity="0.9"/><path d="M112 202 L112 216" stroke="${color}" stroke-width="3"/>`;
+}
+function shoesOnBody(kind, color){
+  if(kind === 'heels') return heelsOnBody(color);
+  if(kind === 'sneakers') return sneakersOnBody(color, '#fff8ec');
+  if(kind === 'sandals') return sandalsOnBody(color);
+  if(kind === 'flats') return maryJanesOnBody(color);
+  return bootsOnBody(color);
+}
+function headbandOnBody(){
+  return `<path d="M76 20 Q100 0 124 20" stroke="#1b0e2e" stroke-width="5.5" fill="none" stroke-linecap="round"/>`;
+}
+function backpackOnBody(){
+  return `<g>
+    <path d="M122 158 Q122 150 130 150 L142 150 Q150 150 150 158 L150 188 Q150 196 142 196 L130 196 Q122 196 122 188 Z" fill="#1b0e2e" stroke="#0f0620" stroke-width="1"/>
+    <rect x="128" y="156" width="16" height="10" rx="3" fill="#3a1166"/>
+    <path d="M130 150 Q136 142 142 150" fill="none" stroke="#1b0e2e" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="136" cy="178" r="2.2" fill="#FFD400"/>
+  </g>`;
+}
+
+/* full mannequin combining current selections */
+function mannequinSVG(state){
+  const parts = [];
+  const skinColor = state.skin ? state.skin.color : '#F5C9A0';
+  const hairColor = state.hairColor ? state.hairColor.color : '#3B2415';
+  const hairKind = state.hair ? state.hair.kind : 'long';
+  parts.push(`<ellipse cx="100" cy="288" rx="62" ry="9" fill="rgba(0,0,0,0.35)"/>`);
+  if(hairKind === 'long'){ parts.push(hairBackOnBody(hairColor)); }
+  parts.push(legsOnBody(skinColor));
+  parts.push(armsOnBody(skinColor));
+  parts.push(headOnBody(skinColor));
+  if(state.top){ parts.push(`<g>${topOnBody(state.top)}</g>`); }
+  else { parts.push(`<g opacity="0.5">${torsoBaseOnBody('#3a1166')}${sleevesOnBody('#3a1166')}</g>`); }
+  parts.push(handsOnBody(skinColor));
+  if(state.bottom){ parts.push(`<g>${bottomOnBody(state.bottom.kind, state.bottom.color)}</g>`); }
+  else { parts.push(`<rect x="74" y="118" width="52" height="34" rx="8" fill="#3a1166" opacity="0.5"/>`); }
+  if(state.bottom && state.bottom.kind === 'skirt'){
+    parts.push(`<rect x="82" y="178" width="18" height="46" rx="8" fill="#fff8ec" stroke="rgba(42,10,74,0.15)" stroke-width="1"/><rect x="100" y="178" width="18" height="46" rx="8" fill="#fff8ec" stroke="rgba(42,10,74,0.15)" stroke-width="1"/>
+                  <rect x="81" y="176" width="20" height="7" rx="3.5" fill="#efe4cf"/><rect x="99" y="176" width="20" height="7" rx="3.5" fill="#efe4cf"/>`);
+  }
+  if(state.shoes){ parts.push(`<g>${shoesOnBody(state.shoes.kind, state.shoes.color)}</g>`); }
+  else { parts.push(`<rect x="72" y="220" width="56" height="16" rx="7" fill="#3a1166" opacity="0.5"/>`); }
+  parts.push(faceOnBody(state.eyes ? state.eyes.color : '#5C3A21'));
+  parts.push(`<g>${hairFrontOnBody(hairKind, hairColor)}</g>`);
+  accessoryRenderOrder.forEach(id=>{
+    const acc = accessories.find(a=>a.id===id);
+    if(acc && state.accessories.has(acc.name)){
+      if(id === 'backpack'){ parts.push(backpackOnBody()); }
+      else if(id === 'headband'){ parts.push(headbandOnBody()); }
+      else{ parts.push(accessoryPart(id)); }
+    }
+  });
+  return `<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">${parts.join('')}</svg>`;
+}
+
+/* ===================== DATA ===================== */
+const tops = [
+  {name:'School Uniform Vest', kind:'uniform', color:'#8a8a95', shirtColor:'#fff8ec', accent:'#7a2436'},
+  {name:'Sequin Halter', color:'#FF1F8F', accent:'#FFD400'},
+  {name:'Graphic Tee', color:'#00D9E0', accent:'#fff'},
+  {name:'Velvet Bustier', color:'#2A0A4A', accent:'#FF4FB8'},
+  {name:'Cozy Knit Sweater', color:'#C9A6FF', accent:null},
+  {name:'Crop Tank', color:'#FFD400', accent:'#2A0A4A'},
+  {name:'Striped Tee', color:'#FFF8EC', accent:'#00D9E0'},
+  {name:'Pastel Graphic Tee', color:'#FFB6E6', accent:'#fff'},
+  {name:'Oversized Turtleneck', color:'#7a5cff', accent:null},
+];
+const bottoms = [
+  {name:'Pleated School Skirt', kind:'skirt', color:'#75757e'},
+  {name:'Studded Skinny Jeans', kind:'pants', color:'#2A0A4A'},
+  {name:'Denim Shorts', kind:'shorts', color:'#3a6bd8'},
+  {name:'Faux-Leather Mini Skirt', kind:'skirt', color:'#1b0e2e'},
+  {name:'Wide-Leg Cargos', kind:'pants', color:'#5b5040'},
+  {name:'Plaid Mini Skirt', kind:'skirt', color:'#b3304a'},
+  {name:'Pajama Shorts', kind:'shorts', color:'#ff8fc7'},
+  {name:'Straight Jeans', kind:'pants', color:'#4a6fa5'},
+  {name:'Sequin Mini Skirt', kind:'skirt', color:'#FFD400'},
+];
+const shoes = [
+  {name:'Mary Jane Flats', kind:'flats', color:'#1b0e2e'},
+  {name:'Platform Boots', kind:'boots', color:'#2A0A4A'},
+  {name:'Strappy Heels', kind:'heels', color:'#FFD400'},
+  {name:'Chunky Sneakers', kind:'sneakers', color:'#FF1F8F'},
+  {name:'Woven Sandals', kind:'sandals', color:'#00D9E0'},
+  {name:'Combat Boots', kind:'boots', color:'#1b0e2e'},
+  {name:'Glitter Sneakers', kind:'sneakers', color:'#C9A6FF'},
+];
+const accessories = [
+  {id:'backpack', name:'Mini Backpack', emoji:'🎒'},
+  {id:'headband', name:'Satin Headband', emoji:'🎗️'},
+  {id:'sunglasses', name:'Star Sunglasses', emoji:'🕶️'},
+  {id:'necklace', name:'Choker Necklace', emoji:'📿'},
+  {id:'earrings', name:'Hoop Earrings', emoji:'💫'},
+  {id:'beanie', name:'Beanie', emoji:'🧢'},
+  {id:'purse', name:'Mini Purse', emoji:'👛'},
+  {id:'bracelets', name:'Layered Bracelets', emoji:'✨'},
+  {id:'scrunchie', name:'Scrunchie', emoji:'🎀'},
+  {id:'hat', name:'Wide-Brim Hat', emoji:'👒'},
+];
+const skinTones = [
+  {name:'Porcelain', color:'#FFE3CC'},
+  {name:'Fair', color:'#F5C9A0'},
+  {name:'Light Tan', color:'#E0AC79'},
+  {name:'Tan', color:'#C68950'},
+  {name:'Deep Tan', color:'#9C6438'},
+  {name:'Brown', color:'#7A4B28'},
+  {name:'Deep Brown', color:'#4A2E1B'},
+  {name:'Rich Espresso', color:'#2E1B10'},
+];
+const eyeColors = [
+  {name:'Brown', color:'#5C3A21'},
+  {name:'Hazel', color:'#8A6A3B'},
+  {name:'Green', color:'#4C8C4A'},
+  {name:'Blue', color:'#3E7CB1'},
+  {name:'Gray', color:'#8B96A5'},
+  {name:'Amber', color:'#C77B32'},
+];
+const hairstyles = [
+  {name:'Long Waves', kind:'long'},
+  {name:'High Ponytail', kind:'ponytail'},
+  {name:'Curly Bob', kind:'curly'},
+  {name:'Space Buns', kind:'buns'},
+  {name:'Pixie Cut', kind:'pixie'},
+  {name:'Braided Pigtails', kind:'pigtails'},
+  {name:'Sleek Bun', kind:'bun'},
+];
+const hairColors = [
+  {name:'Jet Black', color:'#1A1A1A'},
+  {name:'Espresso Brown', color:'#3B2415'},
+  {name:'Chestnut', color:'#6B3A1F'},
+  {name:'Golden Blonde', color:'#CAA472'},
+  {name:'Platinum Blonde', color:'#EDE0C8'},
+  {name:'Copper Red', color:'#B5502E'},
+  {name:'Silver Gray', color:'#B7B7C0'},
+  {name:'Pastel Pink', color:'#FFB3DE'},
+  {name:'Lavender', color:'#C9A6FF'},
+  {name:'Ocean Blue', color:'#5FA8D3'},
+];
+
+/* ===================== STATE & RENDER ===================== */
+const state = {
+  top: tops[0], bottom: bottoms[0], shoes: shoes[0], accessories: new Set(['Mini Backpack','Satin Headband']),
+  skin: skinTones[1], eyes: eyeColors[0], hair: hairstyles[0], hairColor: hairColors[2]
+};
+
+function buildGrid(containerId, items, artFn, onPick){
+  const grid = document.getElementById(containerId);
+  items.forEach((item, idx)=>{
+    const card = document.createElement('div');
+    card.className = 'swatch';
+    card.innerHTML = `
+      <div class="hook"></div>
+      <div class="art">${artFn(item)}</div>
+      <div class="name">${item.name}</div>
+    `;
+    card.addEventListener('click', ()=>{
+      grid.querySelectorAll('.swatch').forEach(s=>s.classList.remove('selected'));
+      card.classList.add('selected');
+      onPick(item);
+      renderStage();
+    });
+    grid.appendChild(card);
+  });
+}
+
+function buildAccGrid(){
+  const grid = document.getElementById('accGrid');
+  accessories.forEach(item=>{
+    const card = document.createElement('div');
+    card.className = 'swatch acc';
+    card.innerHTML = `
+      <div class="hook"></div>
+      <div class="art" style="display:flex;align-items:center;justify-content:center;font-size:2.1rem;">${item.emoji}</div>
+      <div class="name">${item.name}</div>
+    `;
+    card.addEventListener('click', ()=>{
+      if(state.accessories.has(item.name)){
+        state.accessories.delete(item.name);
+        card.classList.remove('selected');
+      } else {
+        state.accessories.add(item.name);
+        card.classList.add('selected');
+      }
+      renderStage();
+    });
+    grid.appendChild(card);
+  });
+}
+
+buildGrid('topsGrid', tops, (item)=>swatchSVG(item.kind, 'top', item.color, item.accent, item.shirtColor), (item)=>{ state.top = item; });
+buildGrid('bottomsGrid', bottoms, (item)=>swatchSVG(item.kind, 'bottom', item.color), (item)=>{ state.bottom = item; });
+buildGrid('shoesGrid', shoes, (item)=>swatchSVG(item.kind, 'shoes', item.color), (item)=>{ state.shoes = item; });
+buildAccGrid();
+
+buildGrid('skinGrid', skinTones, (item)=>skinSwatchSVG(item.color), (item)=>{ state.skin = item; });
+buildGrid('eyeGrid', eyeColors, (item)=>eyeSwatchSVG(item.color), (item)=>{ state.eyes = item; });
+buildGrid('hairGrid', hairstyles, (item)=>hairSwatchSVG(item.kind, '#8A5CFF'), (item)=>{ state.hair = item; });
+buildGrid('hairColorGrid', hairColors, (item)=>skinSwatchSVG(item.color), (item)=>{ state.hairColor = item; });
+
+/* pre-mark the default physical traits as selected */
+function markDefault(containerId, arr, defaultItem){
+  const grid = document.getElementById(containerId);
+  const idx = arr.indexOf(defaultItem);
+  if(idx > -1 && grid.children[idx]) grid.children[idx].classList.add('selected');
+}
+markDefault('skinGrid', skinTones, state.skin);
+markDefault('eyeGrid', eyeColors, state.eyes);
+markDefault('hairGrid', hairstyles, state.hair);
+markDefault('hairColorGrid', hairColors, state.hairColor);
+markDefault('topsGrid', tops, state.top);
+markDefault('bottomsGrid', bottoms, state.bottom);
+markDefault('shoesGrid', shoes, state.shoes);
+document.querySelectorAll('#accGrid .swatch').forEach((el, i)=>{
+  if(state.accessories.has(accessories[i].name)) el.classList.add('selected');
+});
+
+const titlePool = ['Your Look','Looking Stage Ready','Total Triple Threat','Mic-Drop Worthy','Camera Ready','Hallway Headliner'];
+
+function renderStage(){
+  document.getElementById('mannequin').innerHTML = mannequinSVG(state);
+
+  const list = document.getElementById('pieceList');
+  list.innerHTML = '';
+  const rows = [
+    ['Top', state.top ? state.top.name : null],
+    ['Bottom', state.bottom ? state.bottom.name : null],
+    ['Shoes', state.shoes ? state.shoes.name : null],
+  ];
+  let anySelected = false;
+  rows.forEach(([role, name])=>{
+    if(name) anySelected = true;
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="role">${role}</span><span>${name ? name : '—'}</span>`;
+    list.appendChild(li);
+  });
+  if(!anySelected){
+    list.innerHTML = '<li class="empty">Pick a top to get started ✨</li>';
+  }
+
+  const chipsWrap = document.getElementById('accChips');
+  chipsWrap.innerHTML = '';
+  state.accessories.forEach(name=>{
+    const span = document.createElement('span');
+    span.textContent = name;
+    chipsWrap.appendChild(span);
+  });
+
+  const title = document.getElementById('stageTitle');
+  if(state.top && state.bottom && state.shoes){
+    title.textContent = titlePool[Math.floor(Math.random()*titlePool.length)];
+  } else {
+    title.textContent = 'Your Look';
+  }
+}
+
+document.getElementById('clearBtn').addEventListener('click', ()=>{
+  state.top = null; state.bottom = null; state.shoes = null; state.accessories.clear();
+  document.querySelectorAll('#topsGrid .swatch, #bottomsGrid .swatch, #shoesGrid .swatch, #accGrid .swatch').forEach(s=>s.classList.remove('selected'));
+  renderStage();
+});
+
+document.getElementById('randomBtn').addEventListener('click', ()=>{
+  const pickRandom = (arr)=> arr[Math.floor(Math.random()*arr.length)];
+  state.top = pickRandom(tops);
+  state.bottom = pickRandom(bottoms);
+  state.shoes = pickRandom(shoes);
+  state.accessories.clear();
+  const shuffledAcc = [...accessories].sort(()=>0.5-Math.random()).slice(0, 2 + Math.floor(Math.random()*2));
+  shuffledAcc.forEach(a=>state.accessories.add(a.name));
+
+  document.querySelectorAll('#topsGrid .swatch').forEach((el,i)=> el.classList.toggle('selected', tops[i]===state.top));
+  document.querySelectorAll('#bottomsGrid .swatch').forEach((el,i)=> el.classList.toggle('selected', bottoms[i]===state.bottom));
+  document.querySelectorAll('#shoesGrid .swatch').forEach((el,i)=> el.classList.toggle('selected', shoes[i]===state.shoes));
+  document.querySelectorAll('#accGrid .swatch').forEach((el,i)=> el.classList.toggle('selected', state.accessories.has(accessories[i].name)));
+
+  renderStage();
+});
+
+renderStage();
+</script>
+</body>
+</html>
